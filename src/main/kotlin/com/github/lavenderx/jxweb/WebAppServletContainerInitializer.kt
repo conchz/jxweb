@@ -31,7 +31,7 @@ class WebAppServletContainerInitializer : ServletContainerInitializer {
         dispatcherContext.register(WebConfig::class.java)
 
         // The main Spring MVC servlet
-        val appServlet = ctx.addServlet("dispatcher-servlet", DispatcherServlet(dispatcherContext))
+        val appServlet = ctx.addServlet("dispatcher", DispatcherServlet(dispatcherContext))
         appServlet.setLoadOnStartup(1)
         appServlet.addMapping("/api/*")
     }
