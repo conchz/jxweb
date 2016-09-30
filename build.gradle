@@ -1,0 +1,53 @@
+group 'com.github.lavenderx'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.0.4'
+    }
+}
+
+apply plugin: 'idea'
+apply plugin: 'kotlin'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+configurations {
+    all*.exclude group: 'commons-logging', module: 'commons-logging'
+}
+
+ext {
+    springVersion = '5.0.0.M2'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+    maven {
+        url 'http://repo.spring.io/milestone/'
+    }
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:1.0.4"
+    compile 'org.apache.commons:commons-lang3:3.4'
+    compile 'ch.qos.logback:logback-classic:1.1.7'
+    compile 'org.slf4j:jcl-over-slf4j:1.7.21'
+    compile "org.springframework:spring-core:$springVersion"
+    compile "org.springframework:spring-beans:$springVersion"
+    compile "org.springframework:spring-aop:$springVersion"
+    compile "org.springframework:spring-context:$springVersion"
+    compile "org.springframework:spring-context-support:$springVersion"
+    compile "org.springframework:spring-jdbc:$springVersion"
+    compile "org.springframework:spring-orm:$springVersion"
+    compile "org.springframework:spring-tx:$springVersion"
+    compile "org.springframework:spring-web:$springVersion"
+    compile "org.springframework:spring-webmvc:$springVersion"
+    compile 'io.undertow:undertow-core:1.4.3.Final'
+    compile 'io.undertow:undertow-servlet:1.4.3.Final'
+}
