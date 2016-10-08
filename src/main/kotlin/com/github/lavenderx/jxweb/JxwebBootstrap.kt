@@ -1,5 +1,6 @@
 package com.github.lavenderx.jxweb
 
+import com.github.lavenderx.jxweb.server.UndertowServer
 import com.github.lavenderx.jxweb.utils.loggerFor
 
 class JxwebBootstrap {
@@ -15,7 +16,7 @@ class JxwebBootstrap {
                 try {
                     webServer.destroy()
                 } catch (e: Exception) {
-                    logger.error("An exception occurred when destroying server", e)
+                    logger.error("An exception occurred when stopping server", e)
                 }
             })
         }

@@ -1,4 +1,4 @@
-package com.github.lavenderx.jxweb
+package com.github.lavenderx.jxweb.server
 
 import com.github.lavenderx.jxweb.utils.loggerFor
 import io.undertow.Undertow
@@ -9,7 +9,8 @@ import io.undertow.servlet.api.ServletContainerInitializerInfo
 import io.undertow.servlet.handlers.DefaultServlet
 import io.undertow.servlet.util.ImmediateInstanceFactory
 import org.springframework.beans.factory.DisposableBean
-import java.util.*
+
+import java.util.HashSet
 
 class UndertowServer(val port: Int) : DisposableBean {
 
@@ -19,9 +20,9 @@ class UndertowServer(val port: Int) : DisposableBean {
 
     init {
         try {
-            val instanceFactory = ImmediateInstanceFactory(WebAppServletContainerInitializer())
+            val instanceFactory = ImmediateInstanceFactory(WebServletContainerInitializer())
             val sciInfo = ServletContainerInitializerInfo(
-                    WebAppServletContainerInitializer::class.java, instanceFactory, HashSet<Class<*>>())
+                    WebServletContainerInitializer::class.java, instanceFactory, HashSet<Class<*>>())
 
             val defaultServlet = Servlets.servlet("default", DefaultServlet::class.java)
             val deploymentInfo = Servlets

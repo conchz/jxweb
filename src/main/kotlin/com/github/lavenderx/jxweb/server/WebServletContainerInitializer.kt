@@ -1,4 +1,4 @@
-package com.github.lavenderx.jxweb
+package com.github.lavenderx.jxweb.server
 
 import com.github.lavenderx.jxweb.config.RootConfig
 import com.github.lavenderx.jxweb.config.WebConfig
@@ -13,7 +13,7 @@ import javax.servlet.ServletException
 /**
  * https://gist.github.com/vmarcinko/f514a6f6c26dbdf876b6
  */
-class WebAppServletContainerInitializer : ServletContainerInitializer {
+class WebServletContainerInitializer : ServletContainerInitializer {
 
     @Throws(ServletException::class)
     override fun onStartup(c: MutableSet<Class<*>>, ctx: ServletContext) {
