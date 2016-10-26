@@ -1,0 +1,23 @@
+project(':server') {
+    
+    apply plugin: 'spring-boot'
+
+    configurations {
+        all*.exclude group: 'commons-logging', module: 'commons-logging'
+        compile.exclude group: 'org.apache.tomcat', module: 'tomcat-jdbc'
+        compile.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+    }
+
+    ext {
+        springbootVersion = '1.4.1.RELEASE'
+    }
+
+    dependencies {
+        compile project(':ui')
+        compile "org.jetbrains.kotlin:kotlin-stdlib:1.0.4"
+        compile 'ch.qos.logback:logback-classic:1.1.7'
+        compile 'org.slf4j:jcl-over-slf4j:1.7.21'
+        compile "org.springframework.boot:spring-boot-starter-web:$springbootVersion"
+        compile "org.springframework.boot:spring-boot-starter-undertow:$springbootVersion"
+    }
+}
